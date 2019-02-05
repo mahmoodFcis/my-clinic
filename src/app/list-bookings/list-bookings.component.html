@@ -1,0 +1,33 @@
+<h2>{{pageTitle}}</h2>
+<div class="row">
+    <div class="col-lg-3">
+        <input type="text" class="C1" [value]="_searchValue" #txtSearch (keyup)="search(txtSearch.value)" /></div>
+</div>
+<div class="row margin_60">
+    <table *ngIf="bookings.length>0"  class="table-bordered">
+        <thead>
+           <tr>
+               <th>
+                   Booking Date
+               </th>
+               <th>
+                    Clinic
+                </th>
+                <th>
+                       Doctor Name
+                    </th>
+                    
+           </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookings">
+                <td>{{booking.Date}}</td>
+                <td>{{booking.Clinic|uppercase}}</td>
+                <td>{{booking.Doctor|lowercase}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="bookings.length==0" style="text-align:center">
+    There is no data to show
+    </div>
+</div>

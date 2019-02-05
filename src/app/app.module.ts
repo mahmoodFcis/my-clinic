@@ -14,6 +14,10 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 import { DoctorDetailComponent } from './doctor-detail/doctor-detail.component';
 import { ClinicDetailComponent } from './clinic-detail/clinic-detail.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SubmitReviewComponent } from './submit-review/submit-review.component';
+import { ListBookingsComponent } from './list-bookings/list-bookings.component';
+import { ClinicCardComponent } from './list-clinics/clinic-card/clinic-card.component';
 
 @NgModule({
   declarations: [
@@ -28,11 +32,15 @@ import { ClinicDetailComponent } from './clinic-detail/clinic-detail.component';
     RegisterComponent,
     RegisterDoctorComponent,
     DoctorDetailComponent,
-    ClinicDetailComponent
+    ClinicDetailComponent,
+    ChangePasswordComponent,
+    SubmitReviewComponent,
+    ListBookingsComponent,
+    ClinicCardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

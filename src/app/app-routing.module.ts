@@ -9,6 +9,7 @@ import { ClinicDetailComponent } from './clinic-detail/clinic-detail.component';
 import { DoctorDetailComponent } from './doctor-detail/doctor-detail.component';
 import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
 import { BookingComponent } from './booking/booking.component';
+import { ListBookingsComponent } from './list-bookings/list-bookings.component';
 
 const routes: Routes = [{path:'list-clinics',component:ListClinicsComponent},
 {path:'home',component:HomeComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [{path:'list-clinics',component:ListClinicsComponent},
 {path:'clinic-detail',component:ClinicDetailComponent},
 {path:'doctor-detail',component:DoctorDetailComponent},
 {path:'list-doctors',component:ListDoctorsComponent},
-{path:'booking',component:BookingComponent}
+{path:'booking',component:BookingComponent},
+{path:"list-bookings",component:ListBookingsComponent}
 ];
 
 @NgModule({

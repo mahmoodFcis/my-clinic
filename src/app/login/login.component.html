@@ -2,24 +2,24 @@
   <div class="bg_color_2">
     <div class="container margin_60_35">
       <div id="login-2">
-        <h1>Please login to Findoctor!</h1>
+        <h1 [class.yellowColor]='isYellow'>{{getTitle()}}</h1>
         <form>
           <div class="box_form clearfix">
             <div class="box_login">
-              <a href="#0" class="social_bt facebook">Login with Facebook</a>
+              <a  [href]="faceBookUrl" class="social_bt facebook">Login with Facebook</a>
               <a href="#0" class="social_bt google">Login with Google</a>
               <a href="#0" class="social_bt linkedin">Login with Linkedin</a>
             </div>
             <div class="box_login last">
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your email address">
+                <input type="email" [value]="email" class="form-control" placeholder="Your email address">
               </div>
               <div class="form-group">
-                <input type="password" class="form-control" placeholder="Your password" id="password" name="password">
+                <input type="password" [value]="password" class="form-control" placeholder="Your password" id="password" name="password">
                 <a href="#0" class="forgot"><small>Forgot password?</small></a>
               </div>
               <div class="form-group">
-                <a routerLink="/home"><input class="btn_1" type="submit" value="Login"></a>
+                <a><input class="btn_1" type="button" (click)="login()" value="Login"></a>
               </div>
             </div>
           </div>

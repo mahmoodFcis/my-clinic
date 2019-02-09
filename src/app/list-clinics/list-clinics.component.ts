@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ClinicsService } from './list-clinics.service';
 
 @Component({
   selector: 'app-list-clinics',
@@ -6,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-clinics.component.css']
 })
 export class ListClinicsComponent implements OnInit {
-
-  clinics=[{Id:1,ImageUrl:"../../assets/img/doctor_listing_1.jpg",Title:"My Clinic",Speciality:"Dental"},{Id:2,ImageUrl:"../../assets/img/doctor_listing_1.jpg",Title:"My Clinic 2",Speciality:"Dental"}];
-  constructor() { }
+  clinicsService: ClinicsService;
+  pageSize=10;
+  clinics=[];
+  clinicsAll=[];
+  constructor(clinicService:ClinicsService) {
+    this.clinicsService=clinicService;
+   }
   doChildAction(msg):void{
-    if(msg.indexOf("delete")!=-1)
+    if(msg.indexOf('delete')!=-1)
     {
-      var id=msg.split(":")[1];
+      var id=msg.split(':')[1];
       if(id)
       { 
         var filteredClinics=this.clinics.filter(c=>c.Id!=id);
@@ -21,6 +26,7 @@ export class ListClinicsComponent implements OnInit {
     }
   }
   ngOnInit() {
+   this.clinics= this.clinicsService.getClinics();
   }
 
 }

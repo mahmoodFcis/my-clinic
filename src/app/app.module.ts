@@ -18,6 +18,11 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { SubmitReviewComponent } from './submit-review/submit-review.component';
 import { ListBookingsComponent } from './list-bookings/list-bookings.component';
 import { ClinicCardComponent } from './list-clinics/clinic-card/clinic-card.component';
+import { PaginationComponent } from './shared/pagination.component';
+import { ClinicService } from './list-clinics/list-clinics.service';
+import { PaginationFilter } from './shared/pagination-filter.pipe';
+import { PaginationService } from './shared/pagination.service';
+import { ClinicCardDirective } from './list-clinics/clinic-card/clinic-card.directive';
 
 @NgModule({
   declarations: [
@@ -36,13 +41,16 @@ import { ClinicCardComponent } from './list-clinics/clinic-card/clinic-card.comp
     ChangePasswordComponent,
     SubmitReviewComponent,
     ListBookingsComponent,
-    ClinicCardComponent
+    ClinicCardComponent,
+    PaginationComponent,
+    PaginationFilter,
+    ClinicCardDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [ClinicService,PaginationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

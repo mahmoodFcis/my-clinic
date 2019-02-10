@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h4><strong>Showing {{pageSize*currentPage}}</strong> of {{clinics.length}} results</h4>
+          <h4><strong>Showing {{clinics.length>pageSize?pageSize*page.currentPage:clinics.length}}</strong> of {{clinics.length}} results</h4>
         </div>
         <div class="col-md-6">
           <div class="search_bar_list">
@@ -58,25 +58,18 @@
   <div class="container margin_60_35">
     <div class="row">
       <div class="col-lg-7">
- 
-        <clinics-card *ngFor="let clinic of clinics" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" ></clinics-card>
-        <nav aria-label="" class="add_top_20">
-          <ul class="pagination pagination-sm">
-            <li class="page-item disabled">
-              <a class="page-link" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
+
+        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
+          <div class="cardTitle">
+            {{clinic.Title}}
+          </div>
+        </clinics-card>
+        <app-pagination [pageSize]="pageSize" #page [recordsCount]="clinics.length"></app-pagination>
         <!-- /pagination -->
       </div>
       <!-- /col -->
-      
+      <!-- <input type="text" #nme (change)="save(name.value)">
+      {{name.value}} -->
       <aside class="col-lg-5" id="sidebar">
         <div id="map_listing" class="normal_list">
         </div>

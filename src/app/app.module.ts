@@ -23,7 +23,8 @@ import { ClinicService } from './list-clinics/list-clinics.service';
 import { PaginationFilter } from './shared/pagination-filter.pipe';
 import { PaginationService } from './shared/pagination.service';
 import { ClinicCardDirective } from './list-clinics/clinic-card/clinic-card.directive';
-
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { DeleteConfirmationDirective } from './shared/directives/confirmation.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,12 +45,14 @@ import { ClinicCardDirective } from './list-clinics/clinic-card/clinic-card.dire
     ClinicCardComponent,
     PaginationComponent,
     PaginationFilter,
-    ClinicCardDirective
+    ClinicCardDirective,
+    DeleteConfirmationDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule,ModalModule.forRoot()
   ],
+  exports:[],
   providers: [ClinicService,PaginationService],
   bootstrap: [AppComponent]
 })

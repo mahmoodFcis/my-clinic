@@ -4,8 +4,9 @@ import { Directive, ElementRef } from '@angular/core';
 export class ClinicCardDirective {
     constructor(el:ElementRef)
     {
-        console.log('from the directive');
-        el.nativeElement.style.display="none";
+        el.nativeElement.style.borderStyle='solid';
+        el.nativeElement.style.borderColor='red';
+        
     }
 
 }

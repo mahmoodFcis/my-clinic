@@ -7,8 +7,8 @@
         </div>
         <div class="col-md-6">
           <div class="search_bar_list">
-            <input type="text" class="form-control" placeholder="Ex. Specialist, Name, Doctor...">
-            <input type="submit" value="Search">
+            <input type="text" [(ngModel)]="SearchVal" #txtSearch class="form-control" placeholder="Ex. Specialist, Name, Doctor...">
+            <input type="submit" (click)="search(txtSearch.value)" value="Search">
           </div>
         </div>
       </div>

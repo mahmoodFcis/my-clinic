@@ -1,0 +1,26 @@
+<form #bookForm='ngForm' (ngSubmit)="book(bookForm)">
+
+    <div class="form-group">
+        <label for="txtFirstName">first Name</label>
+        <input [(ngModel)]="booking.firstName" required minlength="10" #firstName="ngModel" name="txtFirstName"
+            id="txtFirstName" type="text" />
+    </div>
+    <div *ngIf="firstName.errors && firstName.touched" class="alert alert-red">
+        <div *ngIf="firstName.errors.required">Please provide the first name</div>
+        <div *ngIf="firstName.errors.minlength">Length should not be less than {{firstName.errors.minlength.requiredLength}}</div>
+    </div>
+    
+
+    <div class="form-group">
+        <label for="txtLastName">last Name</label>
+        <input [(ngModel)]="booking.lastName" type="text" name="txtLastName" id="txtLastName" />
+    </div>
+    <div class="form-group">
+        <label for="">email</label>
+        <input id="txtEmail" [(ngModel)]="booking.email" name="txtEmail" type="text" />
+    </div>
+    <div class="form-group">
+        <input type="submit" [disabled]="!bookForm.valid"  value="Book now">
+    </div>
+
+</form>

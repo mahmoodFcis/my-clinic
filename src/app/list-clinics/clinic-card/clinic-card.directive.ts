@@ -1,11 +1,33 @@
-import { Directive, ElementRef } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 
 @Directive({selector:"[app-highlight]"})
 export class ClinicCardDirective {
-    constructor(el:ElementRef)
+
+    constructor(private el:ElementRef)
     {
-        console.log('from the directive');
-        el.nativeElement.style.display="none";
+       
+       
+       
     }
+
+    @Input() openTime:string;
+    ngOnChanges()
+    {
+        console.log(this.openTime);
+        console.log((new Date()).getHours().toString());
+         if(this.openTime===(new Date()).getHours().toString())
+         {
+            this. el.nativeElement.style.borderStyle='solid';
+            this. el.nativeElement.style.borderColor='green';
+            this. el.nativeElement.insertAdjacentHTML('afterbegin','<strong>Open</strong>')
+         }
+         else 
+         {
+             this.el.nativeElement.style.borderStyle='solid';
+            this. el.nativeElement.style.borderColor='red';
+            this. el.nativeElement.insertAdjacentHTML('afterbegin','<strong>closed</strong>')
+         }
+    }
+   
 
 }

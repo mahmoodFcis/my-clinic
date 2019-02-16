@@ -10,11 +10,25 @@ import { PaginationService } from '../shared/pagination.service';
 })
 export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewChecked {
   pageSize:number=10;
+ private searchVal:string="";
+ allClinics:any[]=[];
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
   clinicService:ClinicService;
   clinics=[];
   constructor(_clinicService:ClinicService,private paginationService:PaginationService) { 
     this.clinicService=_clinicService;
+  }
+
+  set SearchVal(val)
+  {
+    this.searchVal=val;
+
+    this.clinics=this.allClinics.filter(c=>c.Title.indexOf(this.searchVal)!=-1);
+
+  }
+  ngDoCheck()
+  {
+   
   }
   doChildAction(msg):void{
     if(msg.indexOf("delete")!=-1)
@@ -30,6 +44,7 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
   ngOnInit() {
 
     this.clinics=this.clinicService.getAll();
+    this.allClinics=this.clinics;
     this.paginationService.currentPage.subscribe(pgeNumber=>console.log("current page number from service",pgeNumber));
   }
 

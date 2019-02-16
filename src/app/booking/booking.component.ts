@@ -11,5 +11,10 @@ export class BookingComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  saveCustomerInformation(fg):void{
+    if(fg.valid)
+    {
+      // calling the api to register a new user into the system
+    }
+  }
 }

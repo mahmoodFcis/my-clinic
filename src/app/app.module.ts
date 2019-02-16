@@ -23,6 +23,10 @@ import { ClinicService } from './list-clinics/list-clinics.service';
 import { PaginationFilter } from './shared/pagination-filter.pipe';
 import { PaginationService } from './shared/pagination.service';
 import { ClinicCardDirective } from './list-clinics/clinic-card/clinic-card.directive';
+import { ConfirmationDirective } from './shared/directives/confirmation.directive';
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import { CreateBookingComponent } from './booking/create-booking/create-booking.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +48,15 @@ import { ClinicCardDirective } from './list-clinics/clinic-card/clinic-card.dire
     ClinicCardComponent,
     PaginationComponent,
     PaginationFilter,
-    ClinicCardDirective
+    ClinicCardDirective,
+    ConfirmationDirective,
+    CreateBookingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ClinicService,PaginationService],
   bootstrap: [AppComponent]

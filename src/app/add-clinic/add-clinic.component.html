@@ -1,0 +1,31 @@
+<form [formGroup]='form' (ngSubmit)="save()" >
+    <div class="form-group   col-lg-3">
+        <label for="txtName">Clinic Name</label>
+        <input id="txtName" formControlName="clinicName" type="text" class="form-control"/>
+        <div *ngIf="Name.errors && Name.touched">
+            <div *ngIf="Name.errors.required">
+                Clinic Name is required
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-lg-3">
+        <label for="openTime">Open Time</label>
+        <input id="openTime" formControlName="openTime" type="time" class="form-control"/>
+    </div>
+    <div class="form-group col-lg-3">
+        <label for="closeTime">Close Time</label>
+        <input id="closeTime" formControlName="closeTime" type="time" class="form-control"/>
+        {{closeTime.errors}}
+    </div>
+    <div class="form-group col-lg-3" formGroupName="address">
+        <label for="address">Address</label>
+        <textarea id="address" formControlName="addressBox"  class="form-control"></textarea>
+        <div *ngIf="Address.errors">
+            <div *ngIf="Address.errors.minlength">
+                    enter length {{Address.errors.minlength.requiredLength}}
+            </div></div>
+    </div>
+    <div class="form-group col-lg-3 ">
+        <input type="submit" [disabled]='form.invalid' value="Save"/>
+    </div>
+</form>

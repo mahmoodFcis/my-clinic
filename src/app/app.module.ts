@@ -27,6 +27,7 @@ import { ConfirmationDirective } from './shared/directives/confirmation.directiv
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateBookingComponent } from './booking/create-booking/create-booking.component';
+import { AddClinicComponent } from './add-clinic/add-clinic.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CreateBookingComponent } from './booking/create-booking/create-booking.
     PaginationFilter,
     ClinicCardDirective,
     ConfirmationDirective,
-    CreateBookingComponent
+    CreateBookingComponent,
+    AddClinicComponent
   ],
   imports: [
     BrowserModule,

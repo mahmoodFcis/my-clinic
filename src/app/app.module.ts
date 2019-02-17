@@ -27,6 +27,8 @@ import { ConfirmationDirective } from './shared/directives/confirmation.directiv
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import { CreateBookingComponent } from './booking/create-booking/create-booking.component';
+import { AddClinicComponent } from './add-clinic/add-clinic.component';
+import { AddClinicService } from './add-clinic.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,8 @@ import { CreateBookingComponent } from './booking/create-booking/create-booking.
     PaginationFilter,
     ClinicCardDirective,
     ConfirmationDirective,
-    CreateBookingComponent
+    CreateBookingComponent,
+    AddClinicComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,7 @@ import { CreateBookingComponent } from './booking/create-booking/create-booking.
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ClinicService,PaginationService],
+  providers: [ClinicService,PaginationService,AddClinicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

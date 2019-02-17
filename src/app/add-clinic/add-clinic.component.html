@@ -1,0 +1,24 @@
+<form (ngSubmit)="save()" [formGroup]="form">
+  <div class="row form-group">
+    <label for="clinicName">Clinic Name</label>
+    <input type="text" formControlName="clinicName" id="clinicName" />
+    <div *ngIf="clinicName.errors && clinicName.touched" class="form-group">
+      <div *ngIf="clinicName.errors.required">please provide the clinic name</div>
+    </div>
+  </div>
+  <div class="row form-group">
+    <label for="openTime">Open Time</label>
+    <input type="time" id="openTime" formControlName="openTime" />
+  </div>
+  <div class="form-group">
+    <label for="closeTime">Close Time</label>
+    <input type="time" formControlName="closeTime" id="closeTime" />
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <textarea id="address" formControlName="address"></textarea>
+  </div>
+  <div class="form-group">
+    <input type="submit" [disabled]="form.invalid" value="add clinic" />
+  </div>
+</form>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ClinicValidators } from './addClinic-validators';
-import { AddClinicService } from '../add-clinic.service';
+import { AddClinicService } from './add-clinic.service';
 
 @Component({
   selector: 'app-add-clinic',
@@ -20,7 +20,7 @@ export class AddClinicComponent implements OnInit {
     // });
 
     this.form=this.fb.group({
-      "clinicName": ["my clinic",[Validators.required,ClinicValidators.clinicNameShoudBeUnique(clinicService)]],
+      "clinicName": ["my clinic",[Validators.required],ClinicValidators.clinicNameShoudBeUnique(clinicService)],
       "openTime":[""],
       "closeTime":[""],
       "address":[""]

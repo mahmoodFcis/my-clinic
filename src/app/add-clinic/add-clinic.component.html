@@ -4,6 +4,7 @@
     <input type="text" formControlName="clinicName" id="clinicName" />
     <div *ngIf="clinicName.errors && clinicName.touched" class="form-group">
       <div *ngIf="clinicName.errors.required">please provide the clinic name</div>
+      <div *ngIf="clinicName.errors.nameShouldBeUnique">name should be unique</div>
     </div>
   </div>
   <div class="row form-group">

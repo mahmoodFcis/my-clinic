@@ -29,7 +29,8 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { CreateBookingComponent } from './booking/create-booking/create-booking.component';
 import { AddClinicComponent } from './add-clinic/add-clinic.component';
 import { AddClinicService } from './add-clinic.service';
-
+import {HttpClientModule} from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,9 +60,10 @@ import { AddClinicService } from './add-clinic.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [ClinicService,PaginationService,AddClinicService],
+  providers: [ClinicService,PaginationService,AddClinicService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,14 +12,15 @@
             </div>
             <div class="box_login last">
               <div class="form-group">
-                <input type="email" [value]="email" class="form-control" placeholder="Your email address">
+                <input type="text" [(ngModel)]="userModel.userName" name="userName"  class="form-control" placeholder="your user name">
               </div>
               <div class="form-group">
-                <input type="password" [value]="password" class="form-control" placeholder="Your password" id="password" name="password">
+                <input type="password" [(ngModel)]="userModel.password" name="password" class="form-control" placeholder="Your password" id="password" name="password">
                 <a href="#0" class="forgot"><small>Forgot password?</small></a>
               </div>
               <div class="form-group">
                 <a><input class="btn_1" type="button" (click)="login()" value="Login"></a>
+                <p>{{loginMessage}}</p>
               </div>
             </div>
           </div>

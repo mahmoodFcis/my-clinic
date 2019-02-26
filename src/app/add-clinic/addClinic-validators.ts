@@ -1,10 +1,12 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { AddClinicService } from '../add-clinic.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export class ClinicValidators {
 
    
-    static clinicNameShoudBeUnique(_clinicService: AddClinicService) {
+    static clinicNameShoudBeUniqueSync(_clinicService: AddClinicService) {
         return (control: AbstractControl): ValidationErrors | null => {
 
             let name = control.value as string;
@@ -16,6 +18,24 @@ export class ClinicValidators {
                 return { "nameShouldBeUnique": true };
             }
             return null;
+        }
+    }
+    static clinicNameShoudBeUnique(_clinicService: AddClinicService) {
+        return (control: AbstractControl): Observable<ValidationErrors | null> => {
+
+            let name = control.value as string;
+            
+            return _clinicService.getBy(name).pipe(
+                map((lst:any[])=>{
+
+                    
+                    return { "nameShouldBeUnique": true }
+                    
+                })
+           
+            );
+           
+           
         }
     }
 

@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { ClinicValidators } from './addClinic-validators';
 import { AddClinicService } from '../add-clinic.service';
-
+import { IClinic } from './clinic';
+import {catchError} from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 @Component({
   selector: 'app-add-clinic',
   templateUrl: './add-clinic.component.html',
@@ -10,7 +13,7 @@ import { AddClinicService } from '../add-clinic.service';
 })
 export class AddClinicComponent implements OnInit {
   form:FormGroup;
-  constructor(private fb:FormBuilder,clinicService:AddClinicService) { 
+  constructor(private fb:FormBuilder,private clinicService:AddClinicService) { 
   
     // this.form=new FormGroup({
     //   "clinicName": new FormControl("my clinic",[Validators.required,ClinicValidators.clinicNameShoudBeUnique(clinicService)]),
@@ -20,7 +23,7 @@ export class AddClinicComponent implements OnInit {
     // });
 
     this.form=this.fb.group({
-      "clinicName": ["my clinic",[Validators.required,ClinicValidators.clinicNameShoudBeUnique(clinicService)]],
+      "clinicName": ["my clinic",[Validators.required],[ClinicValidators.clinicNameShoudBeUnique(this.clinicService)]],
       "openTime":[""],
       "closeTime":[""],
       "address":[""]
@@ -36,7 +39,23 @@ export class AddClinicComponent implements OnInit {
     return this.form.get('clinicName');
   }
 save():void{
-  console.log(this.form);
+  let clinic:IClinic={
+    clinicName:this.form.get("clinicName").value,
+    openTime:this.form.get("openTime").value.toString(),
+    closeTime:this.form.get("closeTime").value.toString(),
+    address:this.form.get("address").value
+
+  };
+
+  this.clinicService.add(clinic)
+  .subscribe((e)=>console.log(e));
+
+} 
+
+errorHandler(error:HttpErrorResponse):Observable<HttpErrorResponse>
+{
+  console.error("error",error);
+  return throwError(error);
 }
   ngOnInit() {
   }

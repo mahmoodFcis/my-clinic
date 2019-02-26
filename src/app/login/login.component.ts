@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,20 +10,25 @@ export class LoginComponent implements OnInit {
 
   componentTitle = "Login from here";
   faceBookUrl = "https://facebook.login.com";
-  email = "myemail@hotmail.com";
-  password: string = "1234";
+  userModel = { userName: "", password: "" };
   isYellow: boolean;
-  constructor() { this.isYellow = true;}
+  loginMessage: string = "";
+  constructor(private loginService: LoginService) { this.isYellow = true; }
 
-ngOnInit() {
-}
+  ngOnInit() {
+  }
 
-getTitle(): string
-{
-  return this.componentTitle;
-}
-login():void
-{
-  console.log("logged in");
-}
+  getTitle(): string {
+    return this.componentTitle;
+  }
+  login(): void {
+    console.log(this.userModel);
+    this.loginService.login(this.userModel).subscribe(r => {
+
+      if (!r) {
+        this.loginMessage = "user name or password is incorrect";
+      }
+    }
+    );
+  }
 }

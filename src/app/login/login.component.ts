@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,11 @@ export class LoginComponent implements OnInit {
   userModel = { userName: "", password: "" };
   isYellow: boolean;
   loginMessage: string = "";
-  constructor(private loginService: LoginService) { this.isYellow = true; }
+  constructor(private loginService: LoginService,private route:ActivatedRoute,private router:Router) { this.isYellow = true; }
 
   ngOnInit() {
+    //this.componentTitle=this.route.snapshot.data.pageTitle;
+    this.route.data.subscribe(data=>this.componentTitle=data.pageTitle)
   }
 
   getTitle(): string {
@@ -26,9 +29,15 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.userModel).subscribe(r => {
 
       if (!r) {
+        console.log("invalid credetnails")
         this.loginMessage = "user name or password is incorrect";
       }
-    }
+      else 
+      {
+        this.router.navigate(['/home']);
+      }
+    },
+    (err)=>  this.loginMessage = "user name or password is incorrect"
     );
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked } from '@
 import { ClinicService } from './list-clinics.service';
 import { PaginationComponent } from '../shared/pagination.component';
 import { PaginationService } from '../shared/pagination.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-clinics',
@@ -15,7 +16,7 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
   clinicService:ClinicService;
   clinics=[];
-  constructor(_clinicService:ClinicService,private paginationService:PaginationService) { 
+  constructor(_clinicService:ClinicService,private paginationService:PaginationService, private route:ActivatedRoute) { 
     this.clinicService=_clinicService;
   }
 
@@ -42,9 +43,12 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
     }
   }
   ngOnInit() {
-
-    this.clinics=this.clinicService.getAll();
-    this.allClinics=this.clinics;
+    this.route.data.subscribe(data=>{
+      console.log("data of resolved",data);
+      this.clinics=data.clinicsList;
+      this.allClinics=this.clinics;
+    });
+   
     this.paginationService.currentPage.subscribe(pgeNumber=>console.log("current page number from service",pgeNumber));
   }
 
@@ -67,7 +71,7 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
 
   ngOnDestroy()
   {
-    this.paginationService.currentPage.unSubscribe();
+    //this.paginationService.currentPage.unSubscribe();
   }
 
 }

@@ -11,4 +11,7 @@ getAll():any[]{
     }
     return clinics;
 }
+getBy(id:number):any{
+  return this.getAll().filter(c=>c.Id=== id)[0];
+}
 }

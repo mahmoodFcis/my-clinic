@@ -11,18 +11,27 @@ import { ListDoctorsComponent } from './list-doctors/list-doctors.component';
 import { BookingComponent } from './booking/booking.component';
 import { ListBookingsComponent } from './list-bookings/list-bookings.component';
 import { AddClinicComponent } from './add-clinic/add-clinic.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LoggedInGuard } from './shared/loggedIn-guard.service';
+import { ClinicsListResolver } from './list-clinics/ClinicsListResolver';
 
-const routes: Routes = [{path:'list-clinics',component:ListClinicsComponent},
+const routes: Routes = [
+{path:'list-clinics',component:ListClinicsComponent,canActivate:[LoggedInGuard],resolve:{
+  clinicsList:ClinicsListResolver
+}},
 {path:'home',component:HomeComponent},
-{path:'login',component:LoginComponent},
+{path:'login',component:LoginComponent,data:{pageTitle:"Login Page"}},
 {path:'register',component:RegisterComponent},
 {path:'register-doctor',component:RegisterDoctorComponent},
-{path:'clinic-detail',component:ClinicDetailComponent},
+{path:'clinic-detail/:ClinicId',component:ClinicDetailComponent},
 {path:'doctor-detail',component:DoctorDetailComponent},
 {path:'list-doctors',component:ListDoctorsComponent},
 {path:'booking',component:BookingComponent},
 {path:"list-bookings",component:ListBookingsComponent},
-{path:'add-clinic',component:AddClinicComponent}
+{path:'add-clinic',component:AddClinicComponent},
+{path:'searchDoctors',component:HomeComponent},
+{path:'',redirectTo:'home',pathMatch:"full"},
+{path:'**',component:NotFoundComponent}
 ];
 
 @NgModule({

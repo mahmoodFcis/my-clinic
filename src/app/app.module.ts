@@ -31,6 +31,8 @@ import { AddClinicComponent } from './add-clinic/add-clinic.component';
 import { AddClinicService } from './add-clinic.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +56,8 @@ import { CookieService } from 'ngx-cookie-service';
     ClinicCardDirective,
     ConfirmationDirective,
     CreateBookingComponent,
-    AddClinicComponent
+    AddClinicComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

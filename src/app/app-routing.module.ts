@@ -19,8 +19,8 @@ const routes: Routes = [
 {path:'list-clinics',component:ListClinicsComponent,canActivate:[LoggedInGuard],resolve:{
   clinicsList:ClinicsListResolver
 }},
-{path:'home',component:HomeComponent},
-{path:'login',component:LoginComponent,data:{pageTitle:"Login Page"}},
+{path:'home',component:HomeComponent, data:{animation:"HomePage"}},
+{path:'login',component:LoginComponent,data:{pageTitle:"Login Page",animation:"LoginPage"}},
 {path:'register',component:RegisterComponent},
 {path:'register-doctor',component:RegisterDoctorComponent},
 {path:'clinic-detail/:ClinicId',component:ClinicDetailComponent},

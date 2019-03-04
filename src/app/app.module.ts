@@ -32,7 +32,7 @@ import { AddClinicService } from './add-clinic.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +64,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [ClinicService,PaginationService,AddClinicService,CookieService],
   bootstrap: [AppComponent]

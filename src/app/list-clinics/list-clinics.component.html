@@ -59,8 +59,8 @@
     <div class="row">
       <div class="col-lg-7">
 
-        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
-          <div class="cardTitle">
+        <clinics-card  *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (addToFavorite)="addFav($event)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
+          <div  class="cardTitle">
             {{clinic.Title}}
           </div>
         </clinics-card>
@@ -71,8 +71,9 @@
       <!-- <input type="text" #nme (change)="save(name.value)">
       {{name.value}} -->
       <aside class="col-lg-5" id="sidebar">
-        <div id="map_listing" class="normal_list">
-        </div>
+        <ul>
+          <li *ngFor="let fClinic of favList" @fadeIn>{{fClinic.Title}}</li>
+        </ul>
       </aside>
       <!-- /aside -->
       

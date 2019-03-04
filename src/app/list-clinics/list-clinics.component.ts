@@ -3,14 +3,23 @@ import { ClinicService } from './list-clinics.service';
 import { PaginationComponent } from '../shared/pagination.component';
 import { PaginationService } from '../shared/pagination.service';
 import { ActivatedRoute } from '@angular/router';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-list-clinics',
   templateUrl: './list-clinics.component.html',
-  styleUrls: ['./list-clinics.component.css']
+  styleUrls: ['./list-clinics.component.css'],
+  animations:[
+    trigger("fadeIn",
+[transition(':enter,:leave',
+[style({
+    opacity:0,backgroundColor:'red' 
+}),animate(2000)])
+])]
 })
 export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewChecked {
   pageSize:number=10;
+  favList:any[]=[];
  private searchVal:string="";
  allClinics:any[]=[];
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
@@ -30,6 +39,9 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
   ngDoCheck()
   {
    
+  }
+  addFav(clinic:any):void{
+    this.favList.push(clinic);
   }
   doChildAction(msg):void{
     if(msg.indexOf("delete")!=-1)

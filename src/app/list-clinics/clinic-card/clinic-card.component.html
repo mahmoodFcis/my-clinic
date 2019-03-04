@@ -1,7 +1,7 @@
 <div class="strip_list " app-highlight [openTime]="cardClinic.openTime">
         <a href="#0" class="wish_bt" ></a>
         <figure>
-          <a href="/clinic-detail"><img [src]="cardClinic.ImageUrl" alt=""></a>
+          <a [href]="'/clinic-detail/'+cardClinic.Id"><img [src]="cardClinic.ImageUrl" alt=""></a>
         </figure>
         <small>{{cardClinic.Speciality}}</small>
         <h3><ng-content select=".cardTitle"></ng-content></h3>

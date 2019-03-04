@@ -2,16 +2,22 @@ import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked } from '@
 import { ClinicService } from './list-clinics.service';
 import { PaginationComponent } from '../shared/pagination.component';
 import { PaginationService } from '../shared/pagination.service';
+import { trigger, transition, style, animate, state } from '@angular/animations';
 
 @Component({
   selector: 'app-list-clinics',
   templateUrl: './list-clinics.component.html',
-  styleUrls: ['./list-clinics.component.css']
+  styleUrls: ['./list-clinics.component.css'],
+  animations:[trigger('color',[
+    state("open",style({backgroundColor:'red'})),
+    state("closed",style({backgroundColor:'yellow'})),
+    transition("closed<=>open",[animate(2000)])])]
 })
 export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewChecked {
   pageSize:number=10;
  private searchVal:string="";
  allClinics:any[]=[];
+ triggerState="open";
   @ViewChild(PaginationComponent) pagination:PaginationComponent;
   clinicService:ClinicService;
   clinics=[];
@@ -67,7 +73,7 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
 
   ngOnDestroy()
   {
-    this.paginationService.currentPage.unSubscribe();
+    //this.paginationService.currentPage.unSubscribe();
   }
 
 }

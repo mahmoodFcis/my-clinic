@@ -14,10 +14,10 @@ import { AddClinicComponent } from './add-clinic/add-clinic.component';
 
 const routes: Routes = [{path:'list-clinics',component:ListClinicsComponent},
 {path:'home',component:HomeComponent},
-{path:'login',component:LoginComponent},
+{path:'login',component:LoginComponent,data:{title: "login page"}},
 {path:'register',component:RegisterComponent},
 {path:'register-doctor',component:RegisterDoctorComponent},
-{path:'clinic-detail',component:ClinicDetailComponent},
+{path:'clinic-detail/:clinicId',component:ClinicDetailComponent},
 {path:'doctor-detail',component:DoctorDetailComponent},
 {path:'list-doctors',component:ListDoctorsComponent},
 {path:'booking',component:BookingComponent},

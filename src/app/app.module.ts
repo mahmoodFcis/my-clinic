@@ -31,6 +31,7 @@ import { AddClinicComponent } from './add-clinic/add-clinic.component';
 import { AddClinicService } from './add-clinic.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +62,8 @@ import { CookieService } from 'ngx-cookie-service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [ClinicService,PaginationService,AddClinicService,CookieService],
   bootstrap: [AppComponent]

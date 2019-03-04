@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +15,10 @@ export class LoginComponent implements OnInit {
   userModel = { userName: "", password: "" };
   isYellow: boolean;
   loginMessage: string = "";
-  constructor(private loginService: LoginService) { this.isYellow = true; }
+  constructor(private loginService: LoginService,private router:Router,private route:ActivatedRoute) { this.isYellow = true; }
 
   ngOnInit() {
+    this.componentTitle=this.route.snapshot.data.title;
   }
 
   getTitle(): string {
@@ -28,6 +31,8 @@ export class LoginComponent implements OnInit {
       if (!r) {
         this.loginMessage = "user name or password is incorrect";
       }
+      else this.router.navigate(["/list-clinics"]);
+      
     }
     );
   }

@@ -58,12 +58,14 @@
   <div class="container margin_60_35">
     <div class="row">
       <div class="col-lg-7">
-
-        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
-          <div class="cardTitle">
+<input type="button" value="x"  (click)="triggerState='closed'"/>
+        <clinics-card  *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)"  [@color]='triggerState' (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
+          <div class="cardTitle" [@color]='triggerState'>
             {{clinic.Title}}
+            <input  type="button" value="click" />
           </div>
-        </clinics-card>
+          
+        </clinics-card >
         <app-pagination [pageSize]="pageSize" #page [recordsCount]="clinics.length"></app-pagination>
         <!-- /pagination -->
       </div>

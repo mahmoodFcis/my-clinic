@@ -3,6 +3,7 @@ import { ClinicService } from './list-clinics.service';
 import { PaginationComponent } from '../shared/pagination.component';
 import { PaginationService } from '../shared/pagination.service';
 import { ActivatedRoute } from '@angular/router';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-list-clinics',
@@ -19,7 +20,9 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
   constructor(_clinicService:ClinicService,private paginationService:PaginationService, private route:ActivatedRoute) { 
     this.clinicService=_clinicService;
   }
-
+  onDrop(event: CdkDragDrop<any[]>) {
+    moveItemInArray(this.clinics, event.previousIndex, event.currentIndex);
+  }
   set SearchVal(val)
   {
     this.searchVal=val;

@@ -1,6 +1,6 @@
 <main class="theia-exception">
   <div id="results">
-    <div class="container">
+    <div class="container" cdkDropList>
       <div class="row">
         <div class="col-md-6">
           <h4><strong>Showing {{clinics.length>pageSize?pageSize*page.currentPage:clinics.length}}</strong> of {{clinics.length}} results</h4>
@@ -55,25 +55,33 @@
   </div>
   <!-- /filters -->
   
-  <div class="container margin_60_35">
+  <div class="container margin_60_35" >
     <div class="row">
       <div class="col-lg-7">
-
-        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
+<!-- <cdk-virtual-scroll-viewport  itemSize='100'> -->
+  <div  style="border:solid red;height:100px"></div>
+  <div cdkDropList (cdkDropListDropped)='onDrop($event)'>
+    
+      <clinics-card  *ngFor="let clinic of (clinics)"  (actionMessage)="doChildAction($event)" [cardClinic]="clinic" cdkDrag>
           <div class="cardTitle">
             {{clinic.Title}}
           </div>
         </clinics-card>
+        
+  </div>
+ 
+<!-- </cdk-virtual-scroll-viewport> -->
+        
         <app-pagination [pageSize]="pageSize" #page [recordsCount]="clinics.length"></app-pagination>
         <!-- /pagination -->
       </div>
       <!-- /col -->
       <!-- <input type="text" #nme (change)="save(name.value)">
       {{name.value}} -->
-      <aside class="col-lg-5" id="sidebar">
-        <div id="map_listing" class="normal_list">
-        </div>
-      </aside>
+      <div class="col-lg-5" style="height:200px;border:solid 1px red" cdkDropList id="sidebar">
+        
+        
+      </div>
       <!-- /aside -->
       
     </div>

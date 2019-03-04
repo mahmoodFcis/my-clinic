@@ -32,7 +32,8 @@ import { AddClinicService } from './add-clinic.service';
 import {HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { NotFoundComponent } from './not-found/not-found.component';
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule, ScrollingModule,DragDropModule
   ],
   providers: [ClinicService,PaginationService,AddClinicService,CookieService],
   bootstrap: [AppComponent]

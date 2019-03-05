@@ -59,7 +59,7 @@
     <div class="row">
       <div class="col-lg-7">
 
-        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
+        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (addToFavorites)="addFavorite($event)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
           <div class="cardTitle">
             {{clinic.Title}}
           </div>
@@ -70,9 +70,13 @@
       <!-- /col -->
       <!-- <input type="text" #nme (change)="save(name.value)">
       {{name.value}} -->
-      <aside class="col-lg-5" id="sidebar">
-        <div id="map_listing" class="normal_list">
-        </div>
+      <aside class="col-lg-5 list_home" id="sidebar">
+        <ul>
+          <li *ngFor="let favClinic of favList" @slideInAnimation>{{favClinic.Title}}
+            <input type="button" value="x" (click)="remove(favClinic)">
+          </li>
+        </ul>
+        
       </aside>
       <!-- /aside -->
       

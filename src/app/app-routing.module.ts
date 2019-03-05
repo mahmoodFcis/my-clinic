@@ -25,12 +25,11 @@ const routes: Routes = [
 {path:'register-doctor',component:RegisterDoctorComponent},
 {path:'clinic-detail/:ClinicId',component:ClinicDetailComponent},
 {path:'doctor-detail',component:DoctorDetailComponent},
-{path:'list-doctors',component:ListDoctorsComponent},
 {path:'booking',component:BookingComponent},
-{path:"list-bookings",component:ListBookingsComponent},
 {path:'add-clinic',component:AddClinicComponent},
 {path:'searchDoctors',component:HomeComponent},
 {path:'',redirectTo:'home',pathMatch:"full"},
+{path:"lazy-loading",loadChildren:"./lazy-loading/lazy-loading.module#LazyLoadingModule"},
 {path:'**',component:NotFoundComponent}
 ];
 

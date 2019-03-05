@@ -1,5 +1,8 @@
-<div class="strip_list " app-highlight [openTime]="cardClinic.openTime">
-        <a href="#0" class="wish_bt" ></a>
+<div class="strip_list " app-highlight [openTime]="cardClinic.openTime" @slideInAnimation 
+ (@slideOutAnimation.start)="animationCallback($event)"
+ (@slideOutAnimation.done)="animationCallback($event)"
+ >
+        <a (click)="addToFavorites.emit(cardClinic)" class="wish_bt" ></a>
         <figure>
           <a [routerLink]="'/clinic-detail/'+cardClinic.Id"><img [src]="cardClinic.ImageUrl" alt=""></a>
         </figure>

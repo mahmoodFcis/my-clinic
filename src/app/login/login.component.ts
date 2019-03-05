@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,13 @@ export class LoginComponent implements OnInit {
   userModel = { userName: "", password: "" };
   isYellow: boolean;
   loginMessage: string = "";
-  constructor(private loginService: LoginService,private route:ActivatedRoute,private router:Router) { this.isYellow = true; }
+  constructor(private loginService: LoginService,private route:ActivatedRoute,private router:Router,private title:Title) { this.isYellow = true; }
 
   ngOnInit() {
     //this.componentTitle=this.route.snapshot.data.pageTitle;
-    this.route.data.subscribe(data=>this.componentTitle=data.pageTitle)
+    this.route.data.subscribe(data=>{this.componentTitle=data.pageTitle;
+    this.title.setTitle(data.pageTitle);
+    })
   }
 
   getTitle(): string {

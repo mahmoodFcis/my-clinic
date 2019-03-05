@@ -3,11 +3,13 @@ import { ClinicService } from './list-clinics.service';
 import { PaginationComponent } from '../shared/pagination.component';
 import { PaginationService } from '../shared/pagination.service';
 import { ActivatedRoute } from '@angular/router';
+import { slideAnimation } from '../app.animations';
 
 @Component({
   selector: 'app-list-clinics',
   templateUrl: './list-clinics.component.html',
-  styleUrls: ['./list-clinics.component.css']
+  styleUrls: ['./list-clinics.component.css'],
+  animations:[slideAnimation]
 })
 export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewChecked {
   pageSize:number=10;
@@ -51,7 +53,17 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
    
     this.paginationService.currentPage.subscribe(pgeNumber=>console.log("current page number from service",pgeNumber));
   }
-
+  favList:any[]=[];
+  addFavorite(clinic)
+  {
+     this.favList.push(clinic);
+  }
+  remove(clinic){
+   
+    
+    this.favList=this.favList.filter(c=> c.Id!=clinic.Id);
+    
+  }
   ngAfterViewInit()
   {
     console.log(this.pagination.currentPage);

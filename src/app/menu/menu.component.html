@@ -17,20 +17,20 @@
       <div class="col-lg-9 col-6">
         <ul id="top_access">
         
-          <li><a href="/register-doctor"><i class="pe-7s-add-user"></i></a></li>
+          <li *ngIf="loginService.isLoggedIn">welcome {{loginService.isLoggedIn?loginService.getCurrentUser().name:""}}</li>
         </ul>
         <nav id="menu" class="main-menu">
           <ul>
             <li>
               <span><a [routerLink]="urlParam" routerLinkActive="active">Home</a></span>
-              <span><a href="/list-bookings" routerLinkActive="active">List Bookings</a></span>
+              <span><a href="/lazy-loading/list-bookings" routerLinkActive="active">List Bookings</a></span>
             </li>
             <li>
               <span><a *ngIf="loginService.isLoggedIn" href="/list-clinics" routerLinkActive="active">Clinics</a></span>
               
             </li>
             <li>
-              <span><a href="/list-doctors">Doctors</a></span>
+              <span><a href="/lazy-loading/list-doctors">Doctors</a></span>
              
             </li>
                 <li><a href="submit-review.html">Submit Review</a></li>

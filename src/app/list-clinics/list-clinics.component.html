@@ -59,7 +59,7 @@
     <div class="row">
       <div class="col-lg-7">
 <!-- <cdk-virtual-scroll-viewport  itemSize='100'> -->
-  <div  style="border:solid red;height:100px"></div>
+  <div  style="border:solid red;height:100px" cdkDrop></div>
   <div cdkDropList (cdkDropListDropped)='onDrop($event)'>
     
       <clinics-card  *ngFor="let clinic of (clinics)"  (actionMessage)="doChildAction($event)" [cardClinic]="clinic" cdkDrag>
@@ -78,7 +78,7 @@
       <!-- /col -->
       <!-- <input type="text" #nme (change)="save(name.value)">
       {{name.value}} -->
-      <div class="col-lg-5" style="height:200px;border:solid 1px red" cdkDropList id="sidebar">
+      <div class="col-lg-5" style="height:200px;border:solid 1px red" cdkDrop id="sidebar">
         
         
       </div>

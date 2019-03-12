@@ -8,7 +8,7 @@
         <div class="col-md-6">
           <div class="search_bar_list">
             <input type="text" [(ngModel)]="SearchVal" #txtSearch class="form-control" placeholder="Ex. Specialist, Name, Doctor...">
-            <input type="submit" (click)="search(txtSearch.value)" value="Search">
+            <input type="submit" (click)="SearchVal(txtSearch.value)" value="Search">
           </div>
         </div>
       </div>
@@ -58,12 +58,20 @@
   <div class="container margin_60_35">
     <div class="row">
       <div class="col-lg-7">
-
-        <clinics-card *ngFor="let clinic of (clinics|pFilter:pageSize:page.currentPage)" (addToFavorites)="addFavorite($event)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
-          <div class="cardTitle">
-            {{clinic.Title}}
-          </div>
-        </clinics-card>
+<!-- <cdk-virtual-scroll-viewport itemSize="100">
+  <clinics-card *cdkVirtualFor="let clinic of (clinics)" (addToFavorites)="addFavorite($event)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" >
+    <div class="cardTitle">
+      {{clinic.Title}}
+    </div>
+  </clinics-card>
+</cdk-virtual-scroll-viewport> -->
+        <div cdkDropList (cdkDropListDropped)="onDrop($event)"> 
+          <clinics-card *ngFor="let clinic of (clinics)" (addToFavorites)="addFavorite($event)" (actionMessage)="doChildAction($event)" [cardClinic]="clinic" cdkDrag>
+            <div class="cardTitle">
+              {{clinic.Title}}
+            </div>
+          </clinics-card>
+        </div>
         <app-pagination [pageSize]="pageSize" #page [recordsCount]="clinics.length"></app-pagination>
         <!-- /pagination -->
       </div>

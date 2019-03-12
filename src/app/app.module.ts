@@ -33,7 +33,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ConfirmationDirective,
     CreateBookingComponent,
     AddClinicComponent,
-    NotFoundComponent
+    NotFoundComponent,ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,ScrollingModule,DragDropModule
   ],
   providers: [ClinicService,PaginationService,AddClinicService,CookieService],
   bootstrap: [AppComponent]

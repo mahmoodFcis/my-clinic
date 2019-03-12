@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backendServerURL:"http://production.clinic.com"
 };

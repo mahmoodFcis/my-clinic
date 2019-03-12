@@ -4,7 +4,7 @@ import { PaginationComponent } from '../shared/pagination.component';
 import { PaginationService } from '../shared/pagination.service';
 import { ActivatedRoute } from '@angular/router';
 import { slideAnimation } from '../app.animations';
-
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-list-clinics',
   templateUrl: './list-clinics.component.html',
@@ -32,6 +32,11 @@ export class ListClinicsComponent implements OnInit , AfterViewInit, AfterViewCh
   ngDoCheck()
   {
    
+  }
+  onDrop( drgItems:CdkDragDrop<any[]>):void
+  {
+    console.log("drop here")
+    moveItemInArray(this.clinics,drgItems.previousIndex,drgItems.currentIndex);
   }
   doChildAction(msg):void{
     if(msg.indexOf("delete")!=-1)

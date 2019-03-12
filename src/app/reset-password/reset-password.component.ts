@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'reset-password',
-    templateUrl: 'reset-password.component.html'
+    template: 'Hello Reset Password'
 })
 
-export class NameComponent implements OnInit {
+export class ResetPasswordComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
